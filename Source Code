@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <time.h>
+#include <conio.h>
+#include <ctype.h>
+#include <string.h>
+
+#define SCREEN_HEIGHT 25
+
+//Screen Clear Function
+void clear()
+{
+
+  int cnt;
+
+	for(cnt = 0;cnt < SCREEN_HEIGHT;cnt++)
+	{
+		putchar('\n');
+	}
+
+} 
+
+//Random Generation 1 - 10
+int random_gen_function()
+{
+
+	int critical_strike;
+
+	srand(time(NULL));
+
+	critical_strike = rand() % 10 + 1;
+
+	return critical_strike;
+
+}
+
+
+
+
+//Stage (1)
+void stage1(int player_health, int player_armor, int monster_health, int monster_armor)
+{
+
+	int cnt;
+
+
+
+	for(cnt = 0;cnt < cnt + 1;cnt++)
+	{
+
+		printf("Health:%d\t\t\t\t\t\t\t  Skeleton:%d",player_health,monster_health);
+
+		getch();
+
+	}
+
+}
+
+void main()
+{
+
+	//Player Stats
+
+	int player_health = 100;
+	int player_armor = 1;
+
+
+	//Stage (1)
+
+	stage1(player_health,player_armor,123,123);
+
+}
