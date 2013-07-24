@@ -65,7 +65,6 @@ void main()
 	int player_health = 100;
 	int player_armor = 1;
 
-
 	//Stage (1)
 
 	stage1(player_health,player_armor,123,123);
