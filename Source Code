@@ -35,27 +35,52 @@ int random_gen_function()
 
 }
 
+
+
 //Weapons
 
-//Laser Gun (Basic)
-int laser_gun_1(int weapon_damage)
+//Laser Gun 
+const char * laser_gun_1_name()
 {
 
-	return weapon_damage;
+	return "Laser Gun";
 
 }
 
-//Plasma Granades (Basic)
-int plasma_granades_1(int weapon_damage)
+int laser_gun_1()
 {
 
-	return weapon_damage;
+	return 3;
 
 }
+
+
+//Plasma Granade
+
+const char * plasma_granade_1_name()
+{
+
+	return "Plasma Granades";
+
+}
+
+int plasma_granade_1()
+{
+
+	return 7;
+
+}
+
 
 
 //Player Weapons
 
+const char * player_weapon_slot_1_name(const char * player_weapon)
+{
+
+	return player_weapon;
+
+}
 int player_weapon_slot_1(int player_weapon)
 {
 
@@ -63,6 +88,12 @@ int player_weapon_slot_1(int player_weapon)
 
 }
 
+const char * player_weapon_slot_2_name(const char * player_weapon)
+{
+
+	return player_weapon;
+
+}
 int player_weapon_slot_2(int player_weapon)
 {
 
@@ -72,10 +103,31 @@ int player_weapon_slot_2(int player_weapon)
 
 
 
+//Enemies
+
+//Guard 
+const char * guard_1_name()
+{
+
+	return "Guard";
+
+}
+int guard_1_health()
+{
+
+	return 70;
+
+}
+int guard_1_armor()
+{
+
+	return 2;
+
+}
 
 
 //Stage (1)
-void stage1(int player_health, int player_armor, int monster_health, int monster_armor)
+void stage1(int player_health, int player_armor, int player_weapon_slot_1, int player_weapon_slot_2, const char * player_weapon_slot_1_name, const char * player_weapon_slot_2_name, const char * enemy_name, int enemy_health, int enemy_armor)
 {
 
 	int cnt;
@@ -84,10 +136,10 @@ void stage1(int player_health, int player_armor, int monster_health, int monster
 	{
 
 		printf("--------------------------------------------------------------------------------\n");
-		printf("Health:%d\t\t\t\t\t\t\t  Skeleton:%d\n",player_health,monster_health);		
+		printf("Health:%d\t\t\t\t\t\t\t      %s:%d\n", player_health, enemy_name,enemy_health);		
 		printf("\n");
-		printf("\n");
-		printf("\n");
+		printf("Weapon:%s\n",player_weapon_slot_1_name);
+		printf("Utility:%s\n",player_weapon_slot_2_name);
 		printf("\n");
 		printf("\n");
 		printf("\n");
@@ -124,6 +176,8 @@ void main()
 
 	//Stage (1)
 
-	stage1(player_health,player_armor,123,123);
+	stage1(player_health, player_armor, player_weapon_slot_1(laser_gun_1()), player_weapon_slot_2(plasma_granade_1()), player_weapon_slot_1_name(laser_gun_1_name()), player_weapon_slot_2_name(plasma_granade_1_name()),guard_1_name(), guard_1_health(),guard_1_armor());
+
+	getch();
 
 }
