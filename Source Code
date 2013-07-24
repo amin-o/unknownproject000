@@ -35,6 +35,43 @@ int random_gen_function()
 
 }
 
+//Weapons
+
+//Laser Gun (Basic)
+int laser_gun_1(int weapon_damage)
+{
+
+	return weapon_damage;
+
+}
+
+//Plasma Granades (Basic)
+int plasma_granades_1(int weapon_damage)
+{
+
+	return weapon_damage;
+
+}
+
+
+//Player Weapons
+
+int player_weapon_slot_1(int player_weapon)
+{
+
+	return player_weapon;
+
+}
+
+int player_weapon_slot_2(int player_weapon)
+{
+
+	return player_weapon;
+
+}
+
+
+
 
 
 //Stage (1)
