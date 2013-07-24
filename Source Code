@@ -8,6 +8,8 @@
 
 #define SCREEN_HEIGHT 25
 
+//System
+
 //Screen Clear Function
 void clear()
 {
@@ -40,6 +42,8 @@ int random_gen_function()
 //Weapons
 
 //Laser Gun 
+
+//Name
 const char * laser_gun_1_name()
 {
 
@@ -47,6 +51,7 @@ const char * laser_gun_1_name()
 
 }
 
+//Damage
 int laser_gun_1()
 {
 
@@ -57,6 +62,7 @@ int laser_gun_1()
 
 //Plasma Granade
 
+//Name
 const char * plasma_granade_1_name()
 {
 
@@ -64,6 +70,7 @@ const char * plasma_granade_1_name()
 
 }
 
+//Damage
 int plasma_granade_1()
 {
 
@@ -75,6 +82,7 @@ int plasma_granade_1()
 
 //Player Weapons
 
+//Wepoan Slot 1
 const char * player_weapon_slot_1_name(const char * player_weapon)
 {
 
@@ -88,6 +96,7 @@ int player_weapon_slot_1(int player_weapon)
 
 }
 
+//Weapon Slot 2
 const char * player_weapon_slot_2_name(const char * player_weapon)
 {
 
@@ -124,6 +133,7 @@ int guard_1_armor()
 	return 2;
 
 }
+
 
 
 //Stage (1)
@@ -175,7 +185,6 @@ void main()
 
 
 	//Stage (1)
-
 	stage1(player_health, player_armor, player_weapon_slot_1(laser_gun_1()), player_weapon_slot_2(plasma_granade_1()), player_weapon_slot_1_name(laser_gun_1_name()), player_weapon_slot_2_name(plasma_granade_1_name()),guard_1_name(), guard_1_health(),guard_1_armor());
 
 	getch();
