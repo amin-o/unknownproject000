@@ -12,7 +12,7 @@
 void clear()
 {
 
-  int cnt;
+	int cnt;
 
 	for(cnt = 0;cnt < SCREEN_HEIGHT;cnt++)
 	{
@@ -37,19 +37,38 @@ int random_gen_function()
 
 
 
-
 //Stage (1)
 void stage1(int player_health, int player_armor, int monster_health, int monster_armor)
 {
 
 	int cnt;
 
-
-
 	for(cnt = 0;cnt < cnt + 1;cnt++)
 	{
 
-		printf("Health:%d\t\t\t\t\t\t\t  Skeleton:%d",player_health,monster_health);
+		printf("--------------------------------------------------------------------------------\n");
+		printf("Health:%d\t\t\t\t\t\t\t  Skeleton:%d\n",player_health,monster_health);		
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("--------------------------------------------------------------------------------");
 
 		getch();
 
@@ -64,6 +83,7 @@ void main()
 
 	int player_health = 100;
 	int player_armor = 1;
+
 
 	//Stage (1)
 
