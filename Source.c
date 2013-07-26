@@ -175,9 +175,9 @@ void stage1(int player_health, int player_armor, int player_coins, int player_we
 		    printf("\n");
 		    printf("%s:%s\n", enemy_name, enemy_say);
 		    printf("\n");
-	     	printf("\n");
-			printf("\n");
-			printf("\n");
+	            printf("\n");
+		    printf("\n");
+		    printf("\n");
 		    printf("Combat Log: [ %s ]\n", combat_log);
 		    printf("\n");
 		    printf("\n");
