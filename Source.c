@@ -45,6 +45,19 @@ int random_gen_function()
 
 
 
+//Character Creation
+struct Character_Creation
+{
+
+	char player_name[15];
+	
+
+} player_character_creation ;
+
+
+
+
+
 //Weapons
 
 //Laser Gun 
@@ -159,9 +172,9 @@ void stage1(int player_health, int player_armor, int player_coins, int player_we
 		if(player_health > 0 && enemy_health > 0)
 		{
 
-			system( "cls" );
+		    system( "cls" );
 
-			printf("--------------------------------------------------------------------------------\n");
+		    printf("--------------------------------------------------------------------------------\n");
 		    printf("Health:%d\tPlatinum Coins:%d\t\t\t\t%s:%d\n", player_health, player_coins, enemy_name, enemy_health);		
 		    printf("\n");
 		    printf("Weapon: %s [%d]\n", player_weapon_current_name, player_weapon_ammo);
@@ -192,44 +205,56 @@ void stage1(int player_health, int player_armor, int player_coins, int player_we
 		    if(user_input == 1 && player_weapon_ammo > 1)
 		    {
 
-				enemy_health -= player_weapon_current;
-				player_weapon_ammo -= 1;
+			enemy_health -= player_weapon_current;
+			player_weapon_ammo -= 1;
 
-				sprintf(buffer,"%d",player_weapon_current);
+			sprintf(buffer,"%d",player_weapon_current);
 
-				strcpy(combat_log, buffer);
-				strcpy(player_say, "Pew Pew!");
+			strcpy(combat_log, buffer);
+			strcpy(player_say, "Pew Pew!");
 
 
-			}
-			else if (user_input == 1 && player_weapon_ammo == 1)
-			{
+	            }
+		    else if (user_input == 1 && player_weapon_ammo == 1)
+		    {
 
      			player_weapon_ammo -= 1;
-				strcpy(player_say, "No Ammo!");
+			strcpy(player_say, "No Ammo!");
 
-			}
+		    }
 
 			//Utility Slot
-			if(user_input == 2 && player_utility_ammo > 1)
-			{
+	            if(user_input == 2 && player_utility_ammo > 1)
+		    {
 
-				enemy_health -= player_utility_current;
-				player_utility_ammo -= 1;
+			enemy_health -= player_utility_current;
+			player_utility_ammo -= 1;
 
-				sprintf(buffer,"%d",player_utility_current);
+			sprintf(buffer,"%d",player_utility_current);
 
-				strcpy(combat_log, buffer);
-				strcpy(player_say, "Kaboom!");
+			strcpy(combat_log, buffer);
+			strcpy(player_say, "Kaboom!");
 
-			}
-			else if (user_input == 2 && player_utility_ammo == 1)
-			{
+		    }
+		    else if (user_input == 2 && player_utility_ammo == 1)
+	            {
 
      			player_utility_ammo -= 1;
-				strcpy(player_say, "No Ammo!");
+			strcpy(player_say, "No Ammo!");
 
-			}
+		    }
+
+			//Player Data
+			if(user_input == 000)
+			{
+
+			        system( "cls" );
+
+				printf("Name:%s\n",player_character_creation.player_name);		
+		
+				getch(); //Pause
+
+	        	}
 
 		}
 		//LEVEL BEATED
@@ -314,9 +339,17 @@ void main()
 
 
 	//Player Currency
-    int player_coins = 0; 
+        int player_coins = 0; 
 
 
+
+
+
+	//Character Creation
+	printf("Enter your name:");
+	scanf("%s", player_character_creation.player_name);
+	
+	
 
 
 
