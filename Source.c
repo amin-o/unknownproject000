@@ -186,7 +186,7 @@ const char * guard_1_name()
 int guard_1_health()
 {
 
-	return 75;
+	return 60;
 
 }
 int guard_1_spell_pistol_shot()
@@ -202,12 +202,31 @@ int guard_1_spell_kick()
 
 }
 
+//Guard (2)
+const char * guard_2_name()
+{
+
+	return "Wounded Prison Guard";
+
+}
+int guard_2_health()
+{
+
+	return 25;
+
+}
+int guard_2_spell_pistol_shot()
+{
+
+	return 11;
+
+}
 
 
 
 
 //Stage (1)
-void stage1(int player_weapon_current, int player_utility_current, const char * player_weapon_current_name, const char * player_utility_current_name, const char * enemy_name, int enemy_health)
+void stage1_c1(int player_weapon_current, int player_utility_current, const char * player_weapon_current_name, const char * player_utility_current_name, const char * enemy_name, int enemy_health)
 {
 
 	//Tooltip
@@ -248,8 +267,8 @@ void stage1(int player_weapon_current, int player_utility_current, const char * 
 			printf("--------------------------------------------------------------------------------\n");
 		    printf("Health:%d\t\t\t\t\t\t\t%s:%d\n", player_stats.health, enemy_name, enemy_health);		
 		    printf("\n");
-		    printf("Weapon: %s [%d]\n", player_weapon_current_name, player_ammo.weapon);
-		    printf("Utility: %s [%d]\n", player_utility_current_name, player_ammo.utility);
+			printf("Weapon: %s [%d]\n", player_weapon_current_name, player_ammo.weapon);
+			printf("Utility: %s [%d]\n", player_utility_current_name, player_ammo.utility);
 		    printf("\n");
 		    printf("\n");
 		    printf("\n");
@@ -260,8 +279,8 @@ void stage1(int player_weapon_current, int player_utility_current, const char * 
 		    printf("%s:%s\n", enemy_name, enemy_say);
 		    printf("\n");
 	     	printf("\n");
-		    printf("\n");
-		    printf("\n");
+			printf("\n");
+			printf("\n");
 		    printf("Combat Log: [ %s ]\n", combat_log);
 		    printf("\n");
 		    printf("\n");
@@ -290,7 +309,7 @@ void stage1(int player_weapon_current, int player_utility_current, const char * 
 			{
 
      			player_ammo.weapon -= 1;
-				  strcpy(player_say, "No Ammo!");
+				strcpy(player_say, "No Ammo!");
 
 			}
 
@@ -310,7 +329,7 @@ void stage1(int player_weapon_current, int player_utility_current, const char * 
 			else if (user_input == 2 && player_ammo.utility == 1)
 			{
 
-     		player_ammo.utility -= 1;
+     			player_ammo.utility -= 1;
 				strcpy(player_say, "No Ammo!");
 
 			}
@@ -476,6 +495,267 @@ void stage1(int player_weapon_current, int player_utility_current, const char * 
 	} 
 
 }
+void stage1_c2(int player_weapon_current, int player_utility_current, const char * player_weapon_current_name, const char * player_utility_current_name, const char * enemy_name, int enemy_health)
+{
+
+	//Tooltip
+	char tooltip[100] = " ";
+
+	//Combat Log
+	char combat_log[100] = " ";
+
+	//Player Say
+	char player_say[100] = " ";
+
+	//Enemy Say
+	char enemy_say[100] = " ";
+
+	//Temp Buffer
+	char buffer[100];
+
+	//Scanning User Input
+	int user_input;
+
+	//Basic Counter FOR loop
+	int cnt;
+
+	//Random Gen Data
+	int rng = random_gen_function();
+
+
+
+	//START POINT
+	for(cnt = 0;cnt < cnt + 1;cnt++)
+	{
+		//SYNC
+		if(player_stats.health > 0 && enemy_health > 0)
+		{
+
+			system( "cls" );
+
+			printf("--------------------------------------------------------------------------------\n");
+		    printf("Health:%d\t\t\t\t\t\t%s:%d\n", player_stats.health, enemy_name, enemy_health);		
+		    printf("\n");
+			printf("Weapon: %s [%d]\n", player_weapon_current_name, player_ammo.weapon);
+			printf("Utility: %s [%d]\n", player_utility_current_name, player_ammo.utility);
+		    printf("\n");
+		    printf("\n");
+		    printf("\n");
+		    printf("\n");
+		    printf("You:%s\n", player_say);
+		    printf("\n");
+		    printf("\n");
+		    printf("%s:%s\n", enemy_name, enemy_say);
+		    printf("\n");
+	     	printf("\n");
+			printf("\n");
+			printf("\n");
+		    printf("Combat Log: [ %s ]\n", combat_log);
+		    printf("\n");
+		    printf("\n");
+		    printf("Tooltip:%s\n",tooltip);
+		    printf("\n");
+		    printf("--------------------------------------------------------------------------------");
+
+		    //Scanner
+		    scanf("%d", &user_input);
+
+		    //Weapon Slot Section
+		    if(user_input == 1 && player_ammo.weapon > 1)
+		    {
+
+				enemy_health -= player_weapon_current;
+				player_ammo.weapon -= 1;
+
+				sprintf(buffer,"%d",player_weapon_current);
+
+				strcpy(combat_log, buffer);
+				strcpy(player_say, "Pew Pew!");
+
+
+			}
+			else if (user_input == 1 && player_ammo.weapon == 1)
+			{
+
+     			player_ammo.weapon -= 1;
+				strcpy(player_say, "No Ammo!");
+
+			}
+
+			//Utility Slot Section
+			if(user_input == 2 && player_ammo.utility > 1)
+			{
+
+				enemy_health -= player_utility_current;
+				player_ammo.utility -= 1;
+
+				sprintf(buffer,"%d",player_utility_current);
+
+				strcpy(combat_log, buffer);
+				strcpy(player_say, "Kaboom!");
+
+			}
+			else if (user_input == 2 && player_ammo.utility == 1)
+			{
+
+     			player_ammo.utility -= 1;
+				strcpy(player_say, "No Ammo!");
+
+			}
+
+			//Potions Section
+
+			//Common
+			if(user_input == 7 && player_potions.common > 1)
+			{
+
+				player_stats.health += common_healing_potion();
+				player_potions.common -= 1;
+
+				sprintf(buffer,"+ %d Health",common_healing_potion());
+
+				strcpy(combat_log, buffer);
+				strcpy(player_say, "I feel a refreshed!");
+
+			}
+			else if (user_input == 7 && player_potions.common == 1)
+			{
+
+     			player_potions.common -= 1;
+				strcpy(player_say, "I dont have any more potions!");
+
+			}
+
+			//Greater
+			if(user_input == 8 && player_potions.greater > 1)
+			{
+
+				player_stats.health += greater_healing_potion();
+				player_potions.greater -= 1;
+
+				sprintf(buffer,"+ %d Health",greater_healing_potion());
+
+				strcpy(combat_log, buffer);
+				strcpy(player_say, "I feel stronger!");
+
+			}
+			else if (user_input == 8 && player_potions.greater == 1)
+			{
+
+     			player_potions.greater -= 1;
+				strcpy(player_say, "I dont have any more potions!");
+
+			}
+
+			//Mythical
+			if(user_input == 9 && player_potions.mythical > 1)
+			{
+
+				player_stats.health += mythical_healing_potion();
+				player_potions.mythical -= 1;
+
+				sprintf(buffer,"+ %d Health",mythical_healing_potion());
+
+				strcpy(combat_log, buffer);
+				strcpy(player_say, "Back in fight!");
+
+			}
+			else if (user_input == 9 && player_potions.mythical == 1)
+			{
+
+     			player_potions.mythical -= 1;
+				strcpy(player_say, "I dont have any more potions!");
+
+			}
+
+			//Devine
+			if(user_input == 0 && player_potions.devine > 1)
+			{
+
+				player_stats.health += devine_healing_potion();
+				player_potions.devine -= 1;
+
+				sprintf(buffer,"+ %d Health",devine_healing_potion());
+
+				strcpy(combat_log, buffer);
+				strcpy(player_say, "Second chance...");
+
+			}
+			else if (user_input == 0 && player_potions.devine == 1)
+			{
+
+     			player_potions.devine -= 1;
+				strcpy(player_say, "I dont have any more potions!");
+
+			}
+
+			//Player Data Section
+			if(user_input == 123)
+			{
+
+				system( "cls" );
+
+				printf("Name:%s\n\n",player_character_creation.player_name);
+				printf("Gold Coins:%d\n", player_currency.gold);
+				printf("Platinum Coins:%d\n\n", player_currency.platinum);
+				printf("Common Healing Potions:%d\n", player_potions.common);
+				printf("Greater Healing Potions:%d\n", player_potions.greater);
+				printf("Mythical Healing Potions:%d\n", player_potions.mythical);
+				printf("Devine Healing Potions:%d\n\n", player_potions.devine);
+
+				getch(); //Pause
+
+			}
+
+			//Enemy Section		
+			if(user_input != 123)
+			{
+
+				strcpy(tooltip, "Guard shot you dealing 10 damage.");
+				player_stats.health -= guard_2_spell_pistol_shot();
+
+			}
+
+		}
+		//LEVEL BEATED
+		else if(enemy_health == 0 || enemy_health < 0)
+		{
+
+			system( "cls" );
+			printf("(Press any key too loot!)\n\n\n");
+			getch();
+			printf("+12 Gold Coins\n\n\n");
+			getch();
+			printf("+3 Gold Coins\n\n\n");
+			getch();
+			printf("+3 Platinum Coins\n\n\n");
+			getch();
+			printf("+5 Weapon Ammo\n\n\n");
+			getch();
+			printf("+1 Utility Ammo Potion\n\n\n");
+			getch();
+
+			player_currency.gold += 15;
+			player_currency.platinum += 3;
+			player_ammo.weapon += 5;
+			player_ammo.utility += 1;
+
+			break;
+
+		}
+		//GAME OVER
+		else if(player_stats.health == 0 || player_stats.health < 0)
+		{
+
+			strcpy(tooltip, " *** GAME OVER! *** ");
+			getch();
+			exit(1);
+
+		}
+
+	} 
+
+}
 
 
 
@@ -516,8 +796,8 @@ void main()
 
 
 	//Stage (1)
-	stage1(player_weapon_current, player_utility_current, player_weapon_current_name, player_utility_current_name , guard_1_name(), guard_1_health());
-
+	stage1_c1(player_weapon_current, player_utility_current, player_weapon_current_name, player_utility_current_name , guard_1_name(), guard_1_health());
+	stage1_c2(player_weapon_current, player_utility_current, player_weapon_current_name, player_utility_current_name , guard_2_name(), guard_2_health());
 
 
 	getch();
